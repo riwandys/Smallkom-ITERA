@@ -222,7 +222,6 @@ public class smallkom extends javax.swing.JFrame {
             
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Selamat Datang " + jTextField1.getText(), "Succsessful Login", JOptionPane.PLAIN_MESSAGE);
                 String nama = rs.getString("nama");
                 String id_laboran = jTextField1.getText();
                 String password = new String(jPasswordField1.getPassword());

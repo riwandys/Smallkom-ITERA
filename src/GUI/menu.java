@@ -428,7 +428,6 @@ public class menu extends javax.swing.JFrame {
         smallkom objek = new smallkom();
         objek.setVisible(true);
         this.dispose();
-        JOptionPane.showMessageDialog(null, "Terimakasih telah menggunakan aplikasi ini", "Successfull Logout", JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**

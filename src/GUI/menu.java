@@ -30,20 +30,24 @@ public class menu extends javax.swing.JFrame {
         String[] header = {"Alat","Ruangan","Jenis","Merek","Harga"};
         model = new DefaultTableModel(header,0);
         rincian_biaya.setModel(model);
-        
+        tampil();
     }
     
     public void tampil(){
         try{
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select id_alat,id_ruangan,jenis,merek,harga from alat,spesifikasi where "
-                    + "alat.id_spesifikasi = (select alat.id_spesifikasi from spesifikasi)");
+            ResultSet rs = st.executeQuery("select alat.id_alat,alat.id_ruangan,spesifikasi.jenis,spesifikasi.merek,spesifikasi.harga from alat INNER join spesifikasi on alat.id_spesifikasi = spesifikasi.id_spesifikasi");
+            int sum=0;
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)}; 
+                sum=sum+ rs.getInt(5);
+                model.addRow(baris);
+            }
+            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-    
     
     public void laboran(laboran user){
         try{

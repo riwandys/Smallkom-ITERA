@@ -5,6 +5,12 @@
  */
 package GUI;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author LAURENSIUS
@@ -14,8 +20,13 @@ public class report extends javax.swing.JFrame {
     /**
      * Creates new form report
      */
+    
+    Connection con = null;
+    public static String idRuangan;
+    
     public report() {
         initComponents();
+        con = JConnection.ConnectDb();
     }
 
     /**
@@ -29,16 +40,17 @@ public class report extends javax.swing.JFrame {
 
         report2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        id_ruangan = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        id_alat = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        jenis_kerusakan = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        deskripsi = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,13 +61,13 @@ public class report extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 122, 255));
         jLabel10.setText("LOKASI RUANGAN");
 
-        jComboBox6.setBackground(new java.awt.Color(0, 122, 255));
-        jComboBox6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox6.setForeground(new java.awt.Color(0, 122, 255));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Item Prodi LABTEK" }));
-        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+        id_ruangan.setBackground(new java.awt.Color(0, 122, 255));
+        id_ruangan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        id_ruangan.setForeground(new java.awt.Color(0, 122, 255));
+        id_ruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Item Prodi LABTEK" }));
+        id_ruangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox6ActionPerformed(evt);
+                id_ruanganActionPerformed(evt);
             }
         });
 
@@ -63,20 +75,20 @@ public class report extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 122, 255));
         jLabel11.setText("NOMOR KOMPUTER");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 122, 255)));
+        id_alat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        id_alat.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 122, 255)));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 122, 255));
         jLabel12.setText("JENIS KERUSAKAN");
 
-        jComboBox7.setBackground(new java.awt.Color(0, 122, 255));
-        jComboBox7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox7.setForeground(new java.awt.Color(0, 122, 255));
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+        jenis_kerusakan.setBackground(new java.awt.Color(0, 122, 255));
+        jenis_kerusakan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jenis_kerusakan.setForeground(new java.awt.Color(0, 122, 255));
+        jenis_kerusakan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jenis_kerusakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox7ActionPerformed(evt);
+                jenis_kerusakanActionPerformed(evt);
             }
         });
 
@@ -95,11 +107,11 @@ public class report extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 122, 255)));
-        jScrollPane1.setViewportView(jTextArea1);
+        deskripsi.setColumns(20);
+        deskripsi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        deskripsi.setRows(5);
+        deskripsi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 122, 255)));
+        jScrollPane1.setViewportView(deskripsi);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/balik_kecil.png"))); // NOI18N
@@ -108,6 +120,17 @@ public class report extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setBackground(new java.awt.Color(0, 122, 255));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("CLEAR");
+        jButton6.setBorder(null);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -122,13 +145,16 @@ public class report extends javax.swing.JFrame {
                         .addGroup(report2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jenis_kerusakan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id_alat, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(id_ruangan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(report2Layout.createSequentialGroup()
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(report2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)))
@@ -140,21 +166,23 @@ public class report extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(id_ruangan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(id_alat, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jenis_kerusakan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(report2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -181,26 +209,50 @@ public class report extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+    private void id_ruanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_ruanganActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox6ActionPerformed
+    }//GEN-LAST:event_id_ruanganActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if("Lab TPB Gedung C".equals(jComboBox6.getSelectedItem().toString())){
-            System.out.println("1");
-        }else if("Lab Prodi Gedung C".equals(jComboBox6.getSelectedItem().toString())){
-            System.out.println("2");
-        }else if("Lab TPB LABTEK".equals(jComboBox6.getSelectedItem().toString())){
-            System.out.println("3");
-        }else if("Lab Prodi LABTEK".equals(jComboBox6.getSelectedItem().toString())){
-            System.out.println("4");
+        if("Lab TPB Gedung C".equals(id_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labgdc_1
+            idRuangan = "labgdc_1";
+        }else if("Lab Prodi Gedung C".equals(id_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labgdc_2
+            idRuangan = "labgdc_2";
+        }else if("Lab TPB LABTEK".equals(id_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labtek_1
+            idRuangan = "labtek_1";
+        }else if("Lab Prodi LABTEK".equals(id_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labtek_2
+            idRuangan = "labtek_2";
+        }
+        
+        String sql = "insert into lapor values (?, ?, ?, ?, ?)";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(2, id_alat.getText());
+            ps.setString(3, idRuangan);
+            ps.setString(4, jenis_kerusakan.getSelectedItem().toString());
+            ps.setString(5, deskripsi.getText());
+            
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(report.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+    private void jenis_kerusakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_kerusakanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox7ActionPerformed
+    }//GEN-LAST:event_jenis_kerusakanActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        id_alat.setText("");
+        deskripsi.setText("");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,17 +290,18 @@ public class report extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea deskripsi;
+    private javax.swing.JTextField id_alat;
+    private javax.swing.JComboBox<String> id_ruangan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JComboBox<String> jenis_kerusakan;
     private javax.swing.JPanel report2;
     // End of variables declaration//GEN-END:variables
 }

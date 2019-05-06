@@ -5,7 +5,11 @@
  */
 package GUI;
 
+import static GUI.smallkom.username_laboran;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +39,7 @@ public class info_laboran extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lokasi_ruangan = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -53,14 +57,14 @@ public class info_laboran extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 122, 255));
         jLabel1.setText("LOKASI RUANGAN");
 
-        jComboBox1.setBackground(new java.awt.Color(0, 122, 255));
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(null);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        lokasi_ruangan.setBackground(new java.awt.Color(0, 122, 255));
+        lokasi_ruangan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lokasi_ruangan.setForeground(new java.awt.Color(255, 255, 255));
+        lokasi_ruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Lab Prodi LABTEK" }));
+        lokasi_ruangan.setBorder(null);
+        lokasi_ruangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                lokasi_ruanganActionPerformed(evt);
             }
         });
 
@@ -86,9 +90,9 @@ public class info_laboran extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("Laurensius Joshua Anrico Agustinus");
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("0814117141");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,7 +122,7 @@ public class info_laboran extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lokasi_ruangan, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
@@ -131,7 +135,7 @@ public class info_laboran extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lokasi_ruangan, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,10 +178,39 @@ public class info_laboran extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void lokasi_ruanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lokasi_ruanganActionPerformed
         // TODO add your handling code here:
+        String idruangan = null;
+        if("Lab TPB Gedung C".equals(lokasi_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labgdc_1
+            idruangan = "labgdc_1";
+        }else if("Lab Prodi Gedung C".equals(lokasi_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labgdc_2
+            idruangan = "labgdc_2";
+        }else if("Lab TPB LABTEK".equals(lokasi_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labtek_1
+            idruangan = "labtek_1";
+        }else if("Lab Prodi LABTEK".equals(lokasi_ruangan.getSelectedItem().toString())){
+            //id_ruangan = labtek_2
+            idruangan = "labtek_2";
+        }
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        String sql = "select * from laboran where id_ruangan = ?";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, idruangan);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                String nama = rs.getString("nama");
+                jLabel6.setText(nama);
+                String kontak = rs.getString("kontak");
+                jLabel7.setText(kontak);
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_lokasi_ruanganActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +249,6 @@ public class info_laboran extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -225,5 +257,6 @@ public class info_laboran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> lokasi_ruangan;
     // End of variables declaration//GEN-END:variables
 }

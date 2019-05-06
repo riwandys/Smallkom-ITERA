@@ -64,6 +64,7 @@ public class smallkom extends javax.swing.JFrame {
         jLabel4.setText("Username");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(0, 122, 255));
         jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 122, 255)));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +73,7 @@ public class smallkom extends javax.swing.JFrame {
         });
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(0, 122, 255));
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 122, 255)));
 
         jButton1.setBackground(new java.awt.Color(0, 122, 255));
@@ -163,8 +165,8 @@ public class smallkom extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
                         .addGap(59, 59, 59)
                         .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)))
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(bodyPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,9 +223,15 @@ public class smallkom extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Selamat Datang " + jTextField1.getText(), "Succsessful Login", JOptionPane.PLAIN_MESSAGE);
+                String nama = rs.getString("nama");
+                String id_laboran = jTextField1.getText();
+                String password = new String(jPasswordField1.getPassword());
+                String kontak = rs.getString("kontak");
+                String id_ruangan = rs.getString("id_ruangan");
+                laboran user = new laboran(id_laboran, password, id_ruangan, nama, kontak);
                 username_laboran = jTextField1.getText();
                 con.close();
-                menu objek = new menu();
+                menu objek = new menu(user);
                 objek.setVisible(true);
                 this.dispose();
             }else{

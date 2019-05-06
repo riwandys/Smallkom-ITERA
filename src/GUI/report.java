@@ -52,7 +52,7 @@ public class report extends javax.swing.JFrame {
         jComboBox6.setBackground(new java.awt.Color(0, 122, 255));
         jComboBox6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBox6.setForeground(new java.awt.Color(0, 122, 255));
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Item Prodi LABTEK" }));
         jComboBox6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox6ActionPerformed(evt);
@@ -74,6 +74,11 @@ public class report extends javax.swing.JFrame {
         jComboBox7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBox7.setForeground(new java.awt.Color(0, 122, 255));
         jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox7ActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 122, 255));
@@ -84,6 +89,11 @@ public class report extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("LAPOR");
         jButton5.setBorder(null);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -174,6 +184,23 @@ public class report extends javax.swing.JFrame {
     private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        if("Lab TPB Gedung C".equals(jComboBox6.getSelectedItem().toString())){
+            System.out.println("1");
+        }else if("Lab Prodi Gedung C".equals(jComboBox6.getSelectedItem().toString())){
+            System.out.println("2");
+        }else if("Lab TPB LABTEK".equals(jComboBox6.getSelectedItem().toString())){
+            System.out.println("3");
+        }else if("Lab Prodi LABTEK".equals(jComboBox6.getSelectedItem().toString())){
+            System.out.println("4");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox7ActionPerformed
 
     /**
      * @param args the command line arguments

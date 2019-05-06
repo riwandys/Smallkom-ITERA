@@ -7,7 +7,9 @@ package GUI;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -215,6 +217,17 @@ public class report extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        int x=0;
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from lapor");
+            while(rs.next()){
+                x++;
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(report.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         if("Lab TPB Gedung C".equals(id_ruangan.getSelectedItem().toString())){
             //id_ruangan = labgdc_1
             idRuangan = "labgdc_1";
@@ -233,12 +246,23 @@ public class report extends javax.swing.JFrame {
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
+            ps.setInt(1, x+1);
             ps.setString(2, id_alat.getText());
             ps.setString(3, idRuangan);
             ps.setString(4, jenis_kerusakan.getSelectedItem().toString());
             ps.setString(5, deskripsi.getText());
-            
             ps.executeUpdate();
+            
+            String sql1 = "update alat set kondisi = ? where id_alat = ?";
+            PreparedStatement ps1= con.prepareStatement(sql1);
+            ps1.setString(1, jenis_kerusakan.getSelectedItem().toString());
+            ps1.setString(2, id_alat.getText());
+            ps1.executeUpdate();
+            
+            id_alat.setText("");
+            deskripsi.setText("");
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(report.class.getName()).log(Level.SEVERE, null, ex);
         }

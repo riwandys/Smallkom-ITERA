@@ -41,6 +41,42 @@ public class menu extends javax.swing.JFrame {
         
         tampil_rincian_biaya();
         tampil_daftar_laporan();
+        tampil_data_alat();
+    }
+    
+    public ArrayList<Alat> alatList(){
+        ArrayList<Alat> alatList = new ArrayList<>();
+        
+        try{
+           String query1 = "select * from alat";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query1); 
+            Alat alat;
+            while(rs.next()){
+                alat = new Alat(rs.getString("id_alat"),rs.getString("id_ruangan"),rs.getString("id_spesifikasi"),rs.getString("kondisi"));
+                alatList.add(alat);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        return alatList;
+    
+    }
+    
+    public void tampil_data_alat(){
+        ArrayList<Alat> list = alatList();
+        DefaultTableModel model = (DefaultTableModel)data_alat.getModel();
+        Object[] baris = new Object[4];
+        for(int i=0; i<list.size(); i++){
+            baris[0]=list.get(i).getId_alat();
+            baris[1]=list.get(i).getId_ruangan();
+            baris[2]=list.get(i).getId_spesifikasi();
+            baris[3]=list.get(i).getKondisi();
+            model.addRow(baris);
+        }
+    
     }
     
     public void tampil_rincian_biaya(){
@@ -123,7 +159,8 @@ public class menu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         no_laporan = new javax.swing.JTextField();
         dataalat = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        data_alat = new javax.swing.JTable();
         datadiri = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -229,7 +266,7 @@ public class menu extends javax.swing.JFrame {
             rincianbiayaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rincianbiayaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -286,7 +323,7 @@ public class menu extends javax.swing.JFrame {
             .addGroup(daftarreportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
                     .addGroup(daftarreportLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -307,24 +344,34 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.add(daftarreport, "card5");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel6.setText("alat");
+        data_alat.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(data_alat);
 
         javax.swing.GroupLayout dataalatLayout = new javax.swing.GroupLayout(dataalat);
         dataalat.setLayout(dataalatLayout);
         dataalatLayout.setHorizontalGroup(
             dataalatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataalatLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addContainerGap())
         );
         dataalatLayout.setVerticalGroup(
             dataalatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataalatLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(395, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         mainpanel.add(dataalat, "card4");
@@ -410,7 +457,7 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         mainpanel.add(datadiri, "card2");
@@ -617,6 +664,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel bodypanel;
     private javax.swing.JTable daftar_laporan;
     private javax.swing.JPanel daftarreport;
+    private javax.swing.JTable data_alat;
     private javax.swing.JPanel dataalat;
     private javax.swing.JPanel datadiri;
     private javax.swing.JTextField id_alat;
@@ -634,11 +682,11 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel mainpanel;
     private javax.swing.JTextField no_laporan;

@@ -130,11 +130,12 @@
               <Color blue="ff" green="7a" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Lab TPB Gedung C"/>
-                <StringItem index="1" value="Lab Prodi Gedung C"/>
-                <StringItem index="2" value="Lab TPB LABTEK"/>
-                <StringItem index="3" value="Item Prodi LABTEK"/>
+              <StringArray count="5">
+                <StringItem index="0" value="- Pilih Lokasi -"/>
+                <StringItem index="1" value="Lab TPB Gedung C"/>
+                <StringItem index="2" value="Lab Prodi Gedung C"/>
+                <StringItem index="3" value="Lab TPB LABTEK"/>
+                <StringItem index="4" value="Lab Prodi LABTEK"/>
               </StringArray>
             </Property>
           </Properties>
@@ -193,11 +194,12 @@
               <Color blue="ff" green="7a" red="0" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="komputer tidak menyala"/>
-                <StringItem index="1" value="sofware t"/>
-                <StringItem index="2" value="adad"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="5">
+                <StringItem index="0" value="- Pilih Jenis Kerusakan -"/>
+                <StringItem index="1" value="komputer tidak menyala"/>
+                <StringItem index="2" value="sofware t"/>
+                <StringItem index="3" value="adad"/>
+                <StringItem index="4" value="Item 4"/>
               </StringArray>
             </Property>
           </Properties>

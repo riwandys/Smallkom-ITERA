@@ -5,8 +5,11 @@
  */
 package GUI;
 
+import static GUI.report.idRuangan;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -21,19 +24,26 @@ public class menu extends javax.swing.JFrame {
     
     Connection con = null;
     public DefaultTableModel model;
+    public DefaultTableModel model2;
     
     public menu(laboran user) {
         initComponents();
         con = JConnection.ConnectDb();
         laboran(user);
         
-        String[] header = {"Alat","Ruangan","Jenis","Merek","Harga"};
-        model = new DefaultTableModel(header,0);
+        String[] header1 = {"Alat","Ruangan","Jenis","Merek","Harga"};
+        model = new DefaultTableModel(header1,0);
         rincian_biaya.setModel(model);
-        tampil();
+        
+        String[] header2 = {"No","Id Alat","Id Ruangan","Jenis Kerusakan","Deskripsi","Status"};
+        model2 = new DefaultTableModel(header2,0);
+        daftar_laporan.setModel(model2);
+        
+        tampil_rincian_biaya();
+        tampil_daftar_laporan();
     }
     
-    public void tampil(){
+    public void tampil_rincian_biaya(){
         try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select alat.id_alat,alat.id_ruangan,spesifikasi.jenis,spesifikasi.merek,spesifikasi.harga from alat INNER join spesifikasi on alat.id_spesifikasi = spesifikasi.id_spesifikasi");
@@ -42,6 +52,20 @@ public class menu extends javax.swing.JFrame {
                 String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)}; 
                 sum=sum+ rs.getInt(5);
                 model.addRow(baris);
+            }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void tampil_daftar_laporan(){
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from lapor");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)}; 
+                model2.addRow(baris);
             }
             
         }catch(Exception e){
@@ -89,7 +113,15 @@ public class menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         rincian_biaya = new javax.swing.JTable();
         daftarreport = new javax.swing.JPanel();
+        id_alat = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        status = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        update = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        daftar_laporan = new javax.swing.JTable();
+        jLabel12 = new javax.swing.JLabel();
+        no_laporan = new javax.swing.JTextField();
         dataalat = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         datadiri = new javax.swing.JPanel();
@@ -196,30 +228,80 @@ public class menu extends javax.swing.JFrame {
             rincianbiayaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rincianbiayaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         mainpanel.add(rincianbiaya, "card3");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel5.setText("report");
+        jLabel4.setText("Id Alat");
+
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Status -", "Belum Dikerjakan", "Sedang Dikerjakan", "Selesai" }));
+
+        jLabel5.setText("Status");
+
+        update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+
+        daftar_laporan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(daftar_laporan);
+
+        jLabel12.setText("Nomor Lapor");
 
         javax.swing.GroupLayout daftarreportLayout = new javax.swing.GroupLayout(daftarreport);
         daftarreport.setLayout(daftarreportLayout);
         daftarreportLayout.setHorizontalGroup(
             daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarreportLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(update)
+                    .addComponent(jLabel12)
+                    .addComponent(id_alat)
+                    .addComponent(no_laporan))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                .addContainerGap())
         );
         daftarreportLayout.setVerticalGroup(
             daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarreportLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                    .addGroup(daftarreportLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(no_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(id_alat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(update)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         mainpanel.add(daftarreport, "card5");
@@ -241,7 +323,7 @@ public class menu extends javax.swing.JFrame {
             .addGroup(dataalatLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(333, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         mainpanel.add(dataalat, "card4");
@@ -322,7 +404,7 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         mainpanel.add(datadiri, "card2");
@@ -372,7 +454,7 @@ public class menu extends javax.swing.JFrame {
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -441,6 +523,54 @@ public class menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+        String kondisi = null;
+        if("".equals(id_alat.getText()) || "- Pilih Status -".equals(status.getSelectedItem().toString()) || "".equals(no_laporan.getText())){
+            JOptionPane.showMessageDialog(null, "Harap lengkapi semua data", "Tidak Bisa Update", JOptionPane.ERROR_MESSAGE);
+        }else{
+            
+            try {
+                if("Selesai".equals(status.getSelectedItem().toString())){
+                    String sql2 = "update lapor set status = ? where no_laporan = ?"; 
+                    PreparedStatement ps2 = con.prepareStatement(sql2);
+                    ps2.setString(1, "Selesai");
+                    ps2.setString(2, no_laporan.getText());
+                    ps2.executeUpdate();
+                }else if("Sedang Dikerjakan".equals(status.getSelectedItem().toString())){
+                    String sql2 = "update lapor set status = ? where no_laporan = ?"; 
+                    PreparedStatement ps2 = con.prepareStatement(sql2);
+                    ps2.setString(1, "Sedang Dikerjakan");
+                    ps2.setString(2, no_laporan.getText());
+                    ps2.executeUpdate();
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+           try {
+                String sql1 = "update alat set kondisi = ? where id_alat = ?";
+                PreparedStatement ps1 = con.prepareStatement(sql1);
+                if("Selesai".equals(status.getSelectedItem().toString())){
+                    kondisi = "baik";
+                    ps1.setString(1, kondisi);
+                    ps1.setString(2, id_alat.getText());
+                    ps1.executeUpdate();
+                    
+                }
+                
+                String[] header2 = {"No","Id Alat","Id Ruangan","Jenis Kerusakan","Deskripsi","Status"};
+                model2 = new DefaultTableModel(header2,0);
+                daftar_laporan.setModel(model2);
+                tampil_daftar_laporan();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+    }//GEN-LAST:event_updateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -479,9 +609,11 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodypanel;
+    private javax.swing.JTable daftar_laporan;
     private javax.swing.JPanel daftarreport;
     private javax.swing.JPanel dataalat;
     private javax.swing.JPanel datadiri;
+    private javax.swing.JTextField id_alat;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -490,16 +622,22 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel mainpanel;
+    private javax.swing.JTextField no_laporan;
     private javax.swing.JTable rincian_biaya;
     private javax.swing.JPanel rincianbiaya;
+    private javax.swing.JComboBox<String> status;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

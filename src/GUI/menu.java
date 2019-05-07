@@ -167,6 +167,9 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.setLayout(new java.awt.CardLayout());
 
+        rincian_biaya.setAutoCreateRowSorter(true);
+        rincian_biaya.setBackground(new java.awt.Color(0, 120, 215));
+        rincian_biaya.setForeground(new java.awt.Color(255, 255, 255));
         rincian_biaya.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -255,12 +258,20 @@ public class menu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 122, 255));
         jLabel3.setText("Kontak              :");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 120, 215));
         jLabel7.setText("jLabel7");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 120, 215));
         jLabel8.setText("jLabel8");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 120, 215));
         jLabel9.setText("jLabel9");
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 120, 215));
         jLabel10.setText("jLabel10");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -276,7 +287,7 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(datadiriLayout.createSequentialGroup()
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10))
                     .addGroup(datadiriLayout.createSequentialGroup()
                         .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -288,9 +299,9 @@ public class menu extends javax.swing.JFrame {
                             .addComponent(jLabel8)))
                     .addGroup(datadiriLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)))
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         datadiriLayout.setVerticalGroup(
             datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

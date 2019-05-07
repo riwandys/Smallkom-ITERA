@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -66,7 +67,7 @@ public class report extends javax.swing.JFrame {
         id_ruangan.setBackground(new java.awt.Color(0, 122, 255));
         id_ruangan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         id_ruangan.setForeground(new java.awt.Color(0, 122, 255));
-        id_ruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Item Prodi LABTEK" }));
+        id_ruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Lokasi -", "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Lab Prodi LABTEK" }));
         id_ruangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_ruanganActionPerformed(evt);
@@ -87,7 +88,7 @@ public class report extends javax.swing.JFrame {
         jenis_kerusakan.setBackground(new java.awt.Color(0, 122, 255));
         jenis_kerusakan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jenis_kerusakan.setForeground(new java.awt.Color(0, 122, 255));
-        jenis_kerusakan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "komputer tidak menyala", "sofware t", "adad", "Item 4" }));
+        jenis_kerusakan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Jenis Kerusakan -", "komputer tidak menyala", "sofware t", "adad", "Item 4" }));
         jenis_kerusakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jenis_kerusakanActionPerformed(evt);
@@ -217,50 +218,58 @@ public class report extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        int x=0;
-        try{
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from lapor");
-            while(rs.next()){
-                x++;
-            }
-        }catch(SQLException ex){
-            Logger.getLogger(report.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        if("Lab TPB Gedung C".equals(id_ruangan.getSelectedItem().toString())){
-            //id_ruangan = labgdc_1
-            idRuangan = "labgdc_1";
-        }else if("Lab Prodi Gedung C".equals(id_ruangan.getSelectedItem().toString())){
-            //id_ruangan = labgdc_2
-            idRuangan = "labgdc_2";
-        }else if("Lab TPB LABTEK".equals(id_ruangan.getSelectedItem().toString())){
-            //id_ruangan = labtek_1
-            idRuangan = "labtek_1";
-        }else if("Lab Prodi LABTEK".equals(id_ruangan.getSelectedItem().toString())){
-            //id_ruangan = labtek_2
-            idRuangan = "labtek_2";
-        }
-        
-        String sql = "insert into lapor values (?, ?, ?, ?, ?)";
-        PreparedStatement ps;
         try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, x+1);
-            ps.setString(2, id_alat.getText());
-            ps.setString(3, idRuangan);
-            ps.setString(4, jenis_kerusakan.getSelectedItem().toString());
-            ps.setString(5, deskripsi.getText());
-            ps.executeUpdate();
             
-            String sql1 = "update alat set kondisi = ? where id_alat = ?";
-            PreparedStatement ps1= con.prepareStatement(sql1);
-            ps1.setString(1, jenis_kerusakan.getSelectedItem().toString());
-            ps1.setString(2, id_alat.getText());
-            ps1.executeUpdate();
+            if("- Pilih Jenis Kerusakan -".equals(jenis_kerusakan.getSelectedItem().toString()) || "- Pilih Lokasi -".equals(id_ruangan.getSelectedItem().toString()) || "".equals(id_alat.getText())){
+                JOptionPane.showMessageDialog(null, "Harap lengkapi semua data", "Tidak Bisa Lapor", JOptionPane.ERROR_MESSAGE);
+            }else{
+                int x=0;
+                try{
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("select * from lapor");
+                    while(rs.next()){
+                        x++;
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(report.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if("Lab TPB Gedung C".equals(id_ruangan.getSelectedItem().toString())){
+                    //id_ruangan = labgdc_1
+                    idRuangan = "labgdc_1";
+                }else if("Lab Prodi Gedung C".equals(id_ruangan.getSelectedItem().toString())){
+                    //id_ruangan = labgdc_2
+                    idRuangan = "labgdc_2";
+                }else if("Lab TPB LABTEK".equals(id_ruangan.getSelectedItem().toString())){
+                    //id_ruangan = labtek_1
+                    idRuangan = "labtek_1";
+                }else if("Lab Prodi LABTEK".equals(id_ruangan.getSelectedItem().toString())){
+                    //id_ruangan = labtek_2
+                    idRuangan = "labtek_2";
+                }
+
+                String sql = "insert into lapor values (?, ?, ?, ?, ?, ?)";
+                PreparedStatement ps;
+                ps = con.prepareStatement(sql);
+                ps.setInt(1, x+1);
+                ps.setString(2, id_alat.getText());
+                ps.setString(3, idRuangan);
+                ps.setString(4, jenis_kerusakan.getSelectedItem().toString());
+                ps.setString(5, deskripsi.getText());
+                ps.setString(6, "Belum Dikerjakan");
+                ps.executeUpdate();
             
-            id_alat.setText("");
-            deskripsi.setText("");
+                String sql1 = "update alat set kondisi = ? where id_alat = ?";
+                PreparedStatement ps1= con.prepareStatement(sql1);
+                ps1.setString(1, jenis_kerusakan.getSelectedItem().toString());
+                ps1.setString(2, id_alat.getText());
+                ps1.executeUpdate();
+            
+                id_alat.setText("");
+                deskripsi.setText("");
+            }
+            
             
             
         } catch (SQLException ex) {

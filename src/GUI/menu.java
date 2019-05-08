@@ -6,12 +6,17 @@
 package GUI;
 
 import static GUI.report.idRuangan;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfDocument;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 /**
  *
  * @author PORTAL
@@ -29,7 +34,7 @@ public class menu extends javax.swing.JFrame {
     public menu(laboran user) {
         initComponents();
         con = JConnection.ConnectDb();
-        laboran(user);
+        this.laboran(user);
         
         String[] header1 = {"Alat","Ruangan","Jenis","Merek","Harga"};
         model = new DefaultTableModel(header1,0);
@@ -39,9 +44,9 @@ public class menu extends javax.swing.JFrame {
         model2 = new DefaultTableModel(header2,0);
         daftar_laporan.setModel(model2);
         
-        tampil_rincian_biaya();
-        tampil_daftar_laporan();
-        tampil_data_alat();
+//        tampil_rincian_biaya();
+//        tampil_daftar_laporan();
+//        tampil_data_alat();
     }
     
     public ArrayList<Alat> alatList(){
@@ -148,6 +153,7 @@ public class menu extends javax.swing.JFrame {
         rincianbiaya = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         rincian_biaya = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
         daftarreport = new javax.swing.JPanel();
         id_alat = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -238,8 +244,7 @@ public class menu extends javax.swing.JFrame {
         mainpanel.setLayout(new java.awt.CardLayout());
 
         rincian_biaya.setAutoCreateRowSorter(true);
-        rincian_biaya.setBackground(new java.awt.Color(0, 120, 215));
-        rincian_biaya.setForeground(new java.awt.Color(255, 255, 255));
+        rincian_biaya.setBackground(new java.awt.Color(254, 254, 254));
         rincian_biaya.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -251,7 +256,17 @@ public class menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        rincian_biaya.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        rincian_biaya.setShowGrid(true);
         jScrollPane1.setViewportView(rincian_biaya);
+
+        jButton1.setText("Save");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout rincianbiayaLayout = new javax.swing.GroupLayout(rincianbiaya);
         rincianbiaya.setLayout(rincianbiayaLayout);
@@ -261,12 +276,18 @@ public class menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rincianbiayaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
         );
         rincianbiayaLayout.setVerticalGroup(
             rincianbiayaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rincianbiayaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -315,7 +336,7 @@ public class menu extends javax.swing.JFrame {
                     .addComponent(id_alat)
                     .addComponent(no_laporan))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                 .addContainerGap())
         );
         daftarreportLayout.setVerticalGroup(
@@ -323,7 +344,7 @@ public class menu extends javax.swing.JFrame {
             .addGroup(daftarreportLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
                     .addGroup(daftarreportLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,14 +384,14 @@ public class menu extends javax.swing.JFrame {
             dataalatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataalatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
                 .addContainerGap())
         );
         dataalatLayout.setVerticalGroup(
             dataalatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataalatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -624,6 +645,21 @@ public class menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_updateActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try{
+            String fileDir = "C:/Smallkom/Biaya.pdf";
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, new FileOutputStream(fileDir));
+            doc.open();
+            doc.add(new Paragraph("Laporan Rincian Biaya Logistik Laboratorium"));
+            doc.close();
+            JOptionPane.showMessageDialog(null, "File Sudah Disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex, "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -668,6 +704,7 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JPanel dataalat;
     private javax.swing.JPanel datadiri;
     private javax.swing.JTextField id_alat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

@@ -44,9 +44,9 @@ public class menu extends javax.swing.JFrame {
         model2 = new DefaultTableModel(header2,0);
         daftar_laporan.setModel(model2);
         
-//        tampil_rincian_biaya();
-//        tampil_daftar_laporan();
-//        tampil_data_alat();
+        tampil_rincian_biaya();
+        tampil_daftar_laporan();
+        tampil_data_alat();
     }
     
     public ArrayList<Alat> alatList(){
@@ -73,6 +73,7 @@ public class menu extends javax.swing.JFrame {
     public void tampil_data_alat(){
         ArrayList<Alat> list = alatList();
         DefaultTableModel model = (DefaultTableModel)data_alat.getModel();
+        model.setRowCount(0);
         Object[] baris = new Object[4];
         for(int i=0; i<list.size(); i++){
             baris[0]=list.get(i).getId_alat();
@@ -257,7 +258,6 @@ public class menu extends javax.swing.JFrame {
             }
         ));
         rincian_biaya.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        rincian_biaya.setShowGrid(true);
         jScrollPane1.setViewportView(rincian_biaya);
 
         jButton1.setText("Save");
@@ -367,13 +367,10 @@ public class menu extends javax.swing.JFrame {
 
         data_alat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Alat", "Ruangan", "Spesifikasi", "Kondisi"
             }
         ));
         jScrollPane2.setViewportView(data_alat);
@@ -638,6 +635,8 @@ public class menu extends javax.swing.JFrame {
                 model2 = new DefaultTableModel(header2,0);
                 daftar_laporan.setModel(model2);
                 tampil_daftar_laporan();
+                
+                tampil_data_alat();
                 
             } catch (SQLException ex) {
                 Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);

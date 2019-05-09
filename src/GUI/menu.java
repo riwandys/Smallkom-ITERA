@@ -246,6 +246,8 @@ public class menu extends javax.swing.JFrame {
 
         rincian_biaya.setAutoCreateRowSorter(true);
         rincian_biaya.setBackground(new java.awt.Color(254, 254, 254));
+        rincian_biaya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rincian_biaya.setForeground(new java.awt.Color(0, 122, 255));
         rincian_biaya.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -293,12 +295,19 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.add(rincianbiaya, "card3");
 
+        id_alat.setBackground(new java.awt.Color(0, 122, 255));
+        id_alat.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel4.setText("Id Alat");
 
+        status.setBackground(new java.awt.Color(0, 122, 255));
+        status.setForeground(new java.awt.Color(255, 255, 255));
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Status -", "Belum Dikerjakan", "Sedang Dikerjakan", "Selesai" }));
 
         jLabel5.setText("Status");
 
+        update.setBackground(new java.awt.Color(0, 122, 255));
+        update.setForeground(new java.awt.Color(255, 255, 255));
         update.setText("Update");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,6 +315,8 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        daftar_laporan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        daftar_laporan.setForeground(new java.awt.Color(0, 122, 255));
         daftar_laporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -320,6 +331,9 @@ public class menu extends javax.swing.JFrame {
         jScrollPane3.setViewportView(daftar_laporan);
 
         jLabel12.setText("Nomor Lapor");
+
+        no_laporan.setBackground(new java.awt.Color(0, 122, 255));
+        no_laporan.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout daftarreportLayout = new javax.swing.GroupLayout(daftarreport);
         daftarreport.setLayout(daftarreportLayout);
@@ -365,6 +379,8 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.add(daftarreport, "card5");
 
+        data_alat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        data_alat.setForeground(new java.awt.Color(0, 122, 255));
         data_alat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

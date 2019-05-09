@@ -185,7 +185,7 @@ public class menu extends javax.swing.JFrame {
         bodypanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 122, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-money-32.png"))); // NOI18N
         jButton6.setText("  Rincian Biaya");
@@ -198,7 +198,7 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 122, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-workstation-32.png"))); // NOI18N
         jButton7.setText("  Data Alat");
@@ -212,7 +212,7 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 122, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-system-report-32.png"))); // NOI18N
         jButton8.setText("  Daftar Laporan");
@@ -226,7 +226,7 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(0, 122, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-male-user-32.png"))); // NOI18N
         jButton9.setText("  Data Diri");
@@ -300,14 +300,14 @@ public class menu extends javax.swing.JFrame {
 
         jLabel4.setText("Id Alat");
 
-        status.setBackground(new java.awt.Color(0, 122, 255));
-        status.setForeground(new java.awt.Color(255, 255, 255));
+        status.setForeground(new java.awt.Color(0, 122, 255));
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Status -", "Belum Dikerjakan", "Sedang Dikerjakan", "Selesai" }));
 
         jLabel5.setText("Status");
 
-        update.setBackground(new java.awt.Color(0, 122, 255));
-        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setBackground(new java.awt.Color(255, 255, 255));
+        update.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        update.setForeground(new java.awt.Color(0, 122, 255));
         update.setText("Update");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,10 +345,10 @@ public class menu extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5)
                     .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(update)
                     .addComponent(jLabel12)
                     .addComponent(id_alat)
-                    .addComponent(no_laporan))
+                    .addComponent(no_laporan)
+                    .addComponent(update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                 .addContainerGap())
@@ -372,7 +372,7 @@ public class menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(update)
+                        .addComponent(update, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -497,7 +497,7 @@ public class menu extends javax.swing.JFrame {
         mainpanel.add(datadiri, "card2");
 
         jButton10.setBackground(new java.awt.Color(255, 255, 255));
-        jButton10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(0, 122, 255));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-exit-32.png"))); // NOI18N
         jButton10.setText("  Logout");

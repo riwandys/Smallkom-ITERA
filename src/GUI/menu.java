@@ -260,6 +260,11 @@ public class menu extends javax.swing.JFrame {
             }
         ));
         rincian_biaya.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        rincian_biaya.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rincian_biayaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(rincian_biaya);
 
         jButton1.setText("Save");
@@ -295,8 +300,7 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.add(rincianbiaya, "card3");
 
-        id_alat.setBackground(new java.awt.Color(0, 122, 255));
-        id_alat.setForeground(new java.awt.Color(255, 255, 255));
+        id_alat.setForeground(new java.awt.Color(0, 122, 255));
 
         jLabel4.setText("Id Alat");
 
@@ -332,8 +336,7 @@ public class menu extends javax.swing.JFrame {
 
         jLabel12.setText("Nomor Lapor");
 
-        no_laporan.setBackground(new java.awt.Color(0, 122, 255));
-        no_laporan.setForeground(new java.awt.Color(255, 255, 255));
+        no_laporan.setForeground(new java.awt.Color(0, 122, 255));
 
         javax.swing.GroupLayout daftarreportLayout = new javax.swing.GroupLayout(daftarreport);
         daftarreport.setLayout(daftarreportLayout);
@@ -674,6 +677,10 @@ public class menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex, "Gagal", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rincian_biayaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rincian_biayaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rincian_biayaMouseClicked
 
     /**
      * @param args the command line arguments

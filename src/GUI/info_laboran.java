@@ -58,9 +58,8 @@ public class info_laboran extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 122, 255));
         jLabel1.setText("LOKASI RUANGAN");
 
-        lokasi_ruangan.setBackground(new java.awt.Color(0, 122, 255));
         lokasi_ruangan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lokasi_ruangan.setForeground(new java.awt.Color(255, 255, 255));
+        lokasi_ruangan.setForeground(new java.awt.Color(0, 122, 255));
         lokasi_ruangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lab TPB Gedung C", "Lab Prodi Gedung C", "Lab TPB LABTEK", "Lab Prodi LABTEK" }));
         lokasi_ruangan.setBorder(null);
         lokasi_ruangan.addActionListener(new java.awt.event.ActionListener() {

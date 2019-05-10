@@ -1,37 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GUI;
+package smallkom.GUI;
 
-import static GUI.report.idRuangan;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfDocument;
+import smallkom.Proses.JConnection;
+import smallkom.Data.*;
+import com.itextpdf.text.*;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
-/**
- *
- * @author PORTAL
- */
-public class menu extends javax.swing.JFrame {
+import smallkom.Data.Komputer;
 
-    /**
-     * Creates new form menu
-     */
-    
+public class Menu extends javax.swing.JFrame {
     Connection con = null;
     public DefaultTableModel model;
     public DefaultTableModel model2;
     
-    public menu(laboran user) {
+    public Menu(Laboran user) {
         initComponents();
         con = JConnection.ConnectDb();
         this.laboran(user);
@@ -53,21 +38,18 @@ public class menu extends javax.swing.JFrame {
         ArrayList<Alat> alatList = new ArrayList<>();
         
         try{
-           String query1 = "select * from alat";
+            String query1 = "select * from alat";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query1); 
             Alat alat;
             while(rs.next()){
-                alat = new Alat(rs.getString("id_alat"),rs.getString("id_ruangan"),rs.getString("id_spesifikasi"),rs.getString("kondisi"));
+                alat = new Komputer(rs.getString("id_alat"), rs.getString("id_ruangan"), new Spesifikasi(rs.getString("id_spesifikasi")),rs.getString("kondisi"));
                 alatList.add(alat);
             }
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex);
         }
-        
         return alatList;
-    
     }
     
     public void tampil_data_alat(){
@@ -76,9 +58,10 @@ public class menu extends javax.swing.JFrame {
         model.setRowCount(0);
         Object[] baris = new Object[4];
         for(int i=0; i<list.size(); i++){
-            baris[0]=list.get(i).getId_alat();
-            baris[1]=list.get(i).getId_ruangan();
-            baris[2]=list.get(i).getId_spesifikasi();
+            
+            baris[0]=list.get(i).getID_Alat();
+            baris[1]=list.get(i).ruangan;
+            baris[2]=list.get(i).spek.idSpek;
             baris[3]=list.get(i).getKondisi();
             model.addRow(baris);
         }
@@ -95,8 +78,7 @@ public class menu extends javax.swing.JFrame {
                 sum=sum+ rs.getInt(5);
                 model.addRow(baris);
             }
-            
-        }catch(Exception e){
+        }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -110,17 +92,17 @@ public class menu extends javax.swing.JFrame {
                 model2.addRow(baris);
             }
             
-        }catch(Exception e){
+        }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
     
-    public void laboran(laboran user){
+    public void laboran(Laboran user){
         try{
             jLabel7.setText(user.getNama());
-            jLabel8.setText(user.getId_laboran());
+            jLabel8.setText(user.getUsername());
             jLabel9.setText(user.getKontak());
-            String ruangan=user.getId_ruangan();
+            String ruangan = user.ruangan;
             if("labgdc_1".equals(ruangan)){
                 jLabel10.setText("Lab TPB Gedung C");
             }else if("labgdc_2".equals(ruangan)){
@@ -150,6 +132,7 @@ public class menu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         mainpanel = new javax.swing.JPanel();
         rincianbiaya = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -178,7 +161,6 @@ public class menu extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -242,12 +224,24 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setBackground(new java.awt.Color(255, 255, 255));
+        jButton10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(0, 122, 255));
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-exit-32.png"))); // NOI18N
+        jButton10.setText("  Logout");
+        jButton10.setBorder(null);
+        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         mainpanel.setLayout(new java.awt.CardLayout());
 
         rincian_biaya.setAutoCreateRowSorter(true);
         rincian_biaya.setBackground(new java.awt.Color(254, 254, 254));
         rincian_biaya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rincian_biaya.setForeground(new java.awt.Color(0, 122, 255));
         rincian_biaya.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -320,7 +314,6 @@ public class menu extends javax.swing.JFrame {
         });
 
         daftar_laporan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        daftar_laporan.setForeground(new java.awt.Color(0, 122, 255));
         daftar_laporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -383,7 +376,6 @@ public class menu extends javax.swing.JFrame {
         mainpanel.add(daftarreport, "card5");
 
         data_alat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        data_alat.setForeground(new java.awt.Color(0, 122, 255));
         data_alat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -499,19 +491,6 @@ public class menu extends javax.swing.JFrame {
 
         mainpanel.add(datadiri, "card2");
 
-        jButton10.setBackground(new java.awt.Color(255, 255, 255));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(0, 122, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-exit-32.png"))); // NOI18N
-        jButton10.setText("  Logout");
-        jButton10.setBorder(null);
-        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout bodypanelLayout = new javax.swing.GroupLayout(bodypanel);
         bodypanel.setLayout(bodypanelLayout);
         bodypanelLayout.setHorizontalGroup(
@@ -570,6 +549,7 @@ public class menu extends javax.swing.JFrame {
         mainpanel.add(rincianbiaya);
         mainpanel.repaint();
         mainpanel.revalidate();
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -608,7 +588,7 @@ public class menu extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        smallkom objek = new smallkom();
+        Smallkom objek = new Smallkom();
         objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -619,7 +599,6 @@ public class menu extends javax.swing.JFrame {
         if("".equals(id_alat.getText()) || "- Pilih Status -".equals(status.getSelectedItem().toString()) || "".equals(no_laporan.getText())){
             JOptionPane.showMessageDialog(null, "Harap lengkapi semua data", "Tidak Bisa Update", JOptionPane.ERROR_MESSAGE);
         }else{
-            
             try {
                 if("Selesai".equals(status.getSelectedItem().toString())){
                     String sql2 = "update lapor set status = ? where no_laporan = ?"; 
@@ -634,12 +613,11 @@ public class menu extends javax.swing.JFrame {
                     ps2.setString(2, no_laporan.getText());
                     ps2.executeUpdate();
                 }
-                
             } catch (SQLException ex) {
-                Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+                ex.getMessage();
             }
             
-           try {
+            try {
                 String sql1 = "update alat set kondisi = ? where id_alat = ?";
                 PreparedStatement ps1 = con.prepareStatement(sql1);
                 if("Selesai".equals(status.getSelectedItem().toString())){
@@ -647,7 +625,6 @@ public class menu extends javax.swing.JFrame {
                     ps1.setString(1, kondisi);
                     ps1.setString(2, id_alat.getText());
                     ps1.executeUpdate();
-                    
                 }
                 
                 String[] header2 = {"No","Id Alat","Id Ruangan","Jenis Kerusakan","Deskripsi","Status"};
@@ -658,7 +635,7 @@ public class menu extends javax.swing.JFrame {
                 tampil_data_alat();
                 
             } catch (SQLException ex) {
-                Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+                ex.getMessage();
             } 
         }
     }//GEN-LAST:event_updateActionPerformed

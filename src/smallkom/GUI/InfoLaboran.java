@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package smallkom.GUI;
 
-import static GUI.smallkom.username_laboran;
+import smallkom.Proses.JConnection;
+import static smallkom.GUI.Smallkom.username_laboran;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author LAURENSIUS
  */
-public class info_laboran extends javax.swing.JFrame {
+public class InfoLaboran extends javax.swing.JFrame {
 
     /**
      * Creates new form info_laboran
@@ -23,7 +24,7 @@ public class info_laboran extends javax.swing.JFrame {
     
     Connection con = null;
     
-    public info_laboran() {
+    public InfoLaboran() {
         initComponents();
         con = JConnection.ConnectDb();
     }
@@ -181,7 +182,7 @@ public class info_laboran extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        smallkom objek = new smallkom();
+        Smallkom objek = new Smallkom();
         objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -237,20 +238,21 @@ public class info_laboran extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(info_laboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfoLaboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(info_laboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfoLaboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(info_laboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfoLaboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(info_laboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InfoLaboran.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new info_laboran().setVisible(true);
+                new InfoLaboran().setVisible(true);
             }
         });
     }

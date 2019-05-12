@@ -5,8 +5,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import smallkom.Data.Laboran;
+import javax.swing.table.DefaultTableModel;
+import smallkom.DataEntity.Alat;
+import smallkom.DataEntity.Komputer;
+import smallkom.DataEntity.Laboran;
+import smallkom.DataEntity.Spesifikasi;
 
 public class Proses {
     Connection con = JConnection.ConnectDb();
@@ -32,4 +38,25 @@ public class Proses {
         }
         return null;
     }
+    
+    public ArrayList<Alat> alatList(){
+        ArrayList<Alat> alatList = new ArrayList<>();
+        
+        try{
+            String query1 = "select * from alat";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query1); 
+            Alat alat;
+            while(rs.next()){
+                alat = new Komputer(rs.getString("id_alat"), rs.getString("id_ruangan"), new Spesifikasi(rs.getString("id_spesifikasi")),rs.getString("kondisi"));
+                alatList.add(alat);
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return alatList;
+    }
+    
+    
+    
 }

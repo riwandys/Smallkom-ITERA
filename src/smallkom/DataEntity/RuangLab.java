@@ -1,4 +1,4 @@
-package smallkom.Data;
+package smallkom.DataEntity;
 
 import java.util.TreeSet;
 
@@ -8,4 +8,8 @@ public class RuangLab {
     public Laboran laboran;
     public TreeSet<Komputer> listKomputer;
     public Proyektor proyektorLab;
+    
+    public RuangLab(String namaLab){
+        
+    }
 }

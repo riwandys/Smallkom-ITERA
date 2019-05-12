@@ -1,4 +1,4 @@
-package smallkom.Data;
+package smallkom.DataEntity;
 
 public abstract class Alat {
     public String idAlat, kondisi;

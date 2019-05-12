@@ -1,4 +1,4 @@
-package smallkom.Data;
+package smallkom.DataEntity;
 
 public class Laporan {
     public int noLaporan;

@@ -1,4 +1,4 @@
-package smallkom.Data;
+package smallkom.DataEntity;
 
 public class Proyektor extends Alat{
     public Proyektor(String idAlat, String ruangan, Spesifikasi spek, String kondisi){

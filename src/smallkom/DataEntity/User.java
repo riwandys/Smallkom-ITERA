@@ -1,4 +1,4 @@
-package smallkom.Data;
+package smallkom.DataEntity;
 
 public class User {
     public String username;

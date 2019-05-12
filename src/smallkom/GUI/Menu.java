@@ -1,7 +1,9 @@
 package smallkom.GUI;
 
+import smallkom.DataEntity.Spesifikasi;
+import smallkom.DataEntity.Laboran;
+import smallkom.DataEntity.Alat;
 import smallkom.Proses.JConnection;
-import smallkom.Data.*;
 import com.itextpdf.text.*;
 import java.sql.*;
 import java.util.*;
@@ -9,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
-import smallkom.Data.Komputer;
+import smallkom.DataEntity.Komputer;
 
 public class Menu extends javax.swing.JFrame {
     Connection con = null;
@@ -167,7 +169,7 @@ public class Menu extends javax.swing.JFrame {
         bodypanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 122, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-money-32.png"))); // NOI18N
         jButton6.setText("  Rincian Biaya");
@@ -180,7 +182,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 122, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-workstation-32.png"))); // NOI18N
         jButton7.setText("  Data Alat");
@@ -194,7 +196,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 122, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-system-report-32.png"))); // NOI18N
         jButton8.setText("  Daftar Laporan");
@@ -208,7 +210,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         jButton9.setForeground(new java.awt.Color(0, 122, 255));
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-male-user-32.png"))); // NOI18N
         jButton9.setText("  Data Diri");
@@ -225,7 +227,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton10.setBackground(new java.awt.Color(255, 255, 255));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton10.setFont(new java.awt.Font("Product Sans", 0, 14)); // NOI18N
         jButton10.setForeground(new java.awt.Color(0, 122, 255));
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/foto/icons8-exit-32.png"))); // NOI18N
         jButton10.setText("  Logout");
@@ -530,11 +532,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bodypanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bodypanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bodypanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bodypanel, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
 
         pack();
@@ -545,7 +547,7 @@ public class Menu extends javax.swing.JFrame {
         mainpanel.removeAll();
         mainpanel.repaint();
         mainpanel.revalidate();
-
+        
         mainpanel.add(rincianbiaya);
         mainpanel.repaint();
         mainpanel.revalidate();

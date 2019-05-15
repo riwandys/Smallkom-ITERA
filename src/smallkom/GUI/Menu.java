@@ -4,19 +4,20 @@ import smallkom.DataEntity.Spesifikasi;
 import smallkom.DataEntity.Laboran;
 import smallkom.DataEntity.Alat;
 import smallkom.Proses.JConnection;
-import com.itextpdf.text.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileOutputStream;
+import java.awt.print.*;
+import java.text.MessageFormat;
+import javax.swing.JTable;
 import smallkom.DataEntity.Komputer;
 
 public class Menu extends javax.swing.JFrame {
     Connection con = null;
     public DefaultTableModel model;
     public DefaultTableModel model2;
+    public int sum;
     
     public Menu(Laboran user) {
         initComponents();
@@ -74,7 +75,7 @@ public class Menu extends javax.swing.JFrame {
         try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select alat.id_alat,alat.id_ruangan,spesifikasi.jenis,spesifikasi.merek,spesifikasi.harga from alat INNER join spesifikasi on alat.id_spesifikasi = spesifikasi.id_spesifikasi");
-            int sum=0;
+            sum=0;
             while(rs.next()){
                 String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)}; 
                 sum=sum+ rs.getInt(5);
@@ -675,13 +676,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        MessageFormat header = new MessageFormat("Laporan Rincian Biaya Logistik Laboratorium");
+        MessageFormat footer = new MessageFormat("Dengan Total Harga : "+sum);
+        
         try{
-            String fileDir = "C:/Smallkom/Biaya.pdf";
-            Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream(fileDir));
-            doc.open();
-            doc.add(new Paragraph("Laporan Rincian Biaya Logistik Laboratorium"));
-            doc.close();
+            rincian_biaya.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+            
             JOptionPane.showMessageDialog(null, "File Sudah Disimpan", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex, "Gagal", JOptionPane.ERROR_MESSAGE);

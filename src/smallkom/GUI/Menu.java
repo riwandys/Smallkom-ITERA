@@ -1,5 +1,6 @@
 package smallkom.GUI;
 
+import java.awt.Color;
 import smallkom.DataEntity.Spesifikasi;
 import smallkom.DataEntity.Laboran;
 import smallkom.DataEntity.Alat;
@@ -23,7 +24,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         con = JConnection.ConnectDb();
         this.laboran(user);
-        
+        jButton9.setText(user.getNama());
         String[] header1 = {"Alat","Ruangan","Jenis","Merek","Harga"};
         model = new DefaultTableModel(header1,0);
         rincian_biaya.setModel(model);
@@ -180,16 +181,25 @@ public class Menu extends javax.swing.JFrame {
         bodypanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton9.setBackground(new java.awt.Color(255, 255, 255));
-        jButton9.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Product Sans", 1, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(0, 122, 255));
-        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-male-user-32.png"))); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-male-user-48.png"))); // NOI18N
         jButton9.setText("  Data Diri");
         jButton9.setToolTipText("");
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton9.setFocusPainted(false);
         jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton9MouseExited(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -203,7 +213,16 @@ public class Menu extends javax.swing.JFrame {
         jButton6.setText("  Rincian Biaya");
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
+        jButton6.setFocusPainted(false);
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton6MouseExited(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -217,7 +236,16 @@ public class Menu extends javax.swing.JFrame {
         jButton7.setText("  Data Alat");
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
+        jButton7.setFocusPainted(false);
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -231,7 +259,16 @@ public class Menu extends javax.swing.JFrame {
         jButton8.setText("  Daftar Laporan");
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
+        jButton8.setFocusPainted(false);
         jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton8MouseExited(evt);
+            }
+        });
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -245,7 +282,16 @@ public class Menu extends javax.swing.JFrame {
         jButton10.setText("  Logout");
         jButton10.setBorder(null);
         jButton10.setBorderPainted(false);
+        jButton10.setFocusPainted(false);
         jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton10MouseExited(evt);
+            }
+        });
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -269,11 +315,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setText("Kontak              :");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 120, 215));
+        jLabel7.setForeground(new java.awt.Color(0, 122, 255));
         jLabel7.setText("jLabel7");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 120, 215));
+        jLabel8.setForeground(new java.awt.Color(0, 122, 255));
         jLabel8.setText("jLabel8");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -468,9 +514,8 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(no_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel5)
-                        .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(id_alat, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                        .addComponent(id_alat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                         .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                         .addComponent(status, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -562,7 +607,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(bodypanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mainpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bodypanelLayout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -637,6 +682,7 @@ public class Menu extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         Smallkom objek = new Smallkom();
+        objek.setLocationRelativeTo(null);
         objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -717,41 +763,57 @@ public class Menu extends javax.swing.JFrame {
         status.setSelectedItem(model.getValueAt(selectedRow, 5).toString());
     }//GEN-LAST:event_daftar_laporanMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new menu().setVisible(true);
-//                smallkom.username_laboran;
-//            }
-//        });
-//    }
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+        // TODO add your handling code here:
+        jButton9.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
+        // TODO add your handling code here:
+        jButton9.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton9MouseExited
+
+    private void jButton6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseEntered
+        // TODO add your handling code here:
+        jButton6.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButton6MouseEntered
+
+    private void jButton6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseExited
+        // TODO add your handling code here:
+        jButton6.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton6MouseExited
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        // TODO add your handling code here:
+        jButton7.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
+        // TODO add your handling code here:
+        jButton8.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButton8MouseEntered
+
+    private void jButton10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseEntered
+        // TODO add your handling code here:
+        jButton10.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButton10MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+        // TODO add your handling code here:
+        jButton7.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseExited
+        // TODO add your handling code here:
+        jButton8.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton8MouseExited
+
+    private void jButton10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseExited
+        // TODO add your handling code here:
+        jButton10.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_jButton10MouseExited
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodypanel;

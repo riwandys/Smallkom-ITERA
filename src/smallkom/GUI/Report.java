@@ -189,8 +189,9 @@ public class Report extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Smallkom obj = new Smallkom();
-        obj.setVisible(true);
+        Smallkom objek = new Smallkom();
+        objek.setLocationRelativeTo(null);
+        objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

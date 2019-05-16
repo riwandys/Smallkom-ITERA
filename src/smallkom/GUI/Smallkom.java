@@ -211,6 +211,8 @@ public class Smallkom extends javax.swing.JFrame {
             Laboran user = login.logIn(username, password);
             if (user == null){
                 JOptionPane.showMessageDialog(null, "Username / Password Salah ", "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
+                jTextField1.setText("");
+                jPasswordField1.setText("");
             } else {
                 Menu objek = new Menu(user);
                 objek.setVisible(true);

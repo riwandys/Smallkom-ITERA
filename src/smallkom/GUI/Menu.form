@@ -419,15 +419,15 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="800" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="654" max="32767" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="99" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -554,9 +554,9 @@
                               <Component id="no_laporan" min="-2" pref="134" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <Component id="id_alat" alignment="1" pref="134" max="32767" attributes="0"/>
-                                  <Component id="jLabel4" alignment="1" pref="134" max="32767" attributes="0"/>
-                                  <Component id="update" alignment="1" pref="134" max="32767" attributes="0"/>
+                                  <Component id="id_alat" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="update" alignment="1" max="32767" attributes="0"/>
                                   <Component id="status" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>

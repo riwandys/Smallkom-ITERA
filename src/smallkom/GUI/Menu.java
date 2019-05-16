@@ -73,11 +73,21 @@ public class Menu extends javax.swing.JFrame {
     
     public void tampil_rincian_biaya(){
         try{
+            String ruangan = null;
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select alat.id_alat,alat.id_ruangan,spesifikasi.jenis,spesifikasi.merek,spesifikasi.harga from alat INNER join spesifikasi on alat.id_spesifikasi = spesifikasi.id_spesifikasi");
             sum=0;
             while(rs.next()){
-                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)}; 
+                if("labgdc_1".equals(rs.getString(2))){
+                    ruangan = "Lab TPB Gedung C";
+                }else if("labgdc_2".equals(rs.getString(2))){
+                    ruangan = "Lab Prodi Gedung C";
+                }else if("labtek_1".equals(rs.getString(2))){
+                    ruangan = "Lab TPB LABTEK";
+                }else if("labtek_2".equals(rs.getString(2))){
+                    ruangan = "Lab Prodi LABTEK";
+                }
+                String[] baris = {rs.getString(1),ruangan,rs.getString(3),rs.getString(4),rs.getString(5)}; 
                 sum=sum+ rs.getInt(5);
                 model.addRow(baris);
             }

@@ -58,7 +58,7 @@ public class Report extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 122, 255));
-        jLabel11.setText("NOMOR KOMPUTER");
+        jLabel11.setText("NOMOR ALAT");
 
         id_alat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         id_alat.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 122, 255)));

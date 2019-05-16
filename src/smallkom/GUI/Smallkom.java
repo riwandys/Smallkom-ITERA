@@ -92,7 +92,7 @@ public class Smallkom extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(0, 122, 255));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("REPORT");
+        jButton4.setText("LAPOR");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

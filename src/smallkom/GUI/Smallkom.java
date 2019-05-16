@@ -192,6 +192,7 @@ public class Smallkom extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         InfoLaboran objek = new InfoLaboran();
+        objek.setLocationRelativeTo(null);
         objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -199,6 +200,7 @@ public class Smallkom extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Report objek = new Report();
+        objek.setLocationRelativeTo(null);
         objek.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -212,8 +214,11 @@ public class Smallkom extends javax.swing.JFrame {
             Laboran user = login.logIn(username, password);
             if (user == null){
                 JOptionPane.showMessageDialog(null, "Username / Password Salah ", "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
+                jTextField1.setText("");
+                jPasswordField1.setText("");
             } else {
                 Menu objek = new Menu(user);
+                objek.setLocationRelativeTo(null);
                 objek.setVisible(true);
                 this.dispose();
             }
@@ -235,6 +240,7 @@ public class Smallkom extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Username / Password Salah ", "Unsuccessful Login", JOptionPane.ERROR_MESSAGE);
                 } else {
                     Menu objek = new Menu(user);
+                    objek.setLocationRelativeTo(null);
                     objek.setVisible(true);
                     this.dispose();
                 }
@@ -275,7 +281,9 @@ public class Smallkom extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Smallkom().setVisible(true);
+                Smallkom mainScreen = new Smallkom();
+                mainScreen.setLocationRelativeTo(null);
+                mainScreen.setVisible(true);
             }
         });
     }

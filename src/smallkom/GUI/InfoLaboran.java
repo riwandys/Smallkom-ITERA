@@ -178,7 +178,6 @@ public class InfoLaboran extends javax.swing.JFrame {
         String sql = "select nama_ruangan, ruangan.id_laboran as id_laboran, nama, kontak from ruangan join laboran where laboran.id_laboran = ruangan.id_laboran";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, lokasi_ruangan.getSelectedItem().toString());
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 if(lokasi_ruangan.getSelectedItem().toString().equals(rs.getString("nama_ruangan"))){

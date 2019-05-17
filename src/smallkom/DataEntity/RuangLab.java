@@ -9,7 +9,7 @@ public class RuangLab {
     public TreeSet<Komputer> listKomputer;
     public Proyektor proyektorLab;
     
-    public RuangLab(String namaLab){
-        
+    public void tambahKomputer(Komputer komputer){
+        listKomputer.add(komputer);
     }
 }

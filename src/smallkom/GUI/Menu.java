@@ -472,7 +472,14 @@ public class Menu extends javax.swing.JFrame {
         update.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         update.setText("Update");
         update.setBorder(null);
-        update.setBorderPainted(false);
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateMouseExited(evt);
+            }
+        });
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -816,7 +823,15 @@ public class Menu extends javax.swing.JFrame {
         jButton10.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_jButton10MouseExited
 
-    
+    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
+        // TODO add your handling code here:
+        update.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_updateMouseEntered
+
+    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
+        // TODO add your handling code here:
+        update.setBackground(new Color (255,255,255));
+    }//GEN-LAST:event_updateMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bodypanel;

@@ -213,7 +213,7 @@ public class Menu extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 122, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-money-32.png"))); // NOI18N
-        jButton6.setText("RINCIAN BIAYA");
+        jButton6.setText("Rincian Biaya");
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setFocusPainted(false);
@@ -236,7 +236,7 @@ public class Menu extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 122, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-workstation-32.png"))); // NOI18N
-        jButton7.setText("DATA ALAT");
+        jButton7.setText("Data Alat");
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setFocusPainted(false);
@@ -259,7 +259,7 @@ public class Menu extends javax.swing.JFrame {
         jButton8.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 122, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-system-report-32.png"))); // NOI18N
-        jButton8.setText("DAFTAR LAPORAN");
+        jButton8.setText("Daftar Laporan");
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
         jButton8.setFocusPainted(false);
@@ -386,7 +386,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         mainpanel.add(datadiri, "card2");
@@ -515,12 +515,12 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(no_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(status, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(id_alat))
+                    .addComponent(id_alat)
+                    .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(status, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(update, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())

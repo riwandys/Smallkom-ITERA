@@ -70,7 +70,7 @@ public class Report extends javax.swing.JFrame {
         jenis_kerusakan.setBackground(new java.awt.Color(0, 122, 255));
         jenis_kerusakan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jenis_kerusakan.setForeground(new java.awt.Color(0, 122, 255));
-        jenis_kerusakan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Jenis Kerusakan -", "Komputer tidak hidup", "Perangkat lunak rusak", "Kurang perangkat lunak", "Komputer error" }));
+        jenis_kerusakan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Jenis Kerusakan -", "Alat tidak hidup", "Perangkat lunak rusak", "Kurang perangkat lunak", "Alat error" }));
         jenis_kerusakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jenis_kerusakanActionPerformed(evt);

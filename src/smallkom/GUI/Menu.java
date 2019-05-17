@@ -25,11 +25,11 @@ public class Menu extends javax.swing.JFrame {
         con = JConnection.ConnectDb();
         this.laboran(user);
         jButton9.setText(user.getNama());
-        String[] header1 = {"Alat","Ruangan","Jenis","Merek","Harga"};
+        String[] header1 = {"ALAT","RUANGAN","JENIS","MEREK","HARGA"};
         model = new DefaultTableModel(header1,0);
         rincian_biaya.setModel(model);
         
-        String[] header2 = {"No","Id Alat","Id Ruangan","Jenis Kerusakan","Deskripsi","Status"};
+        String[] header2 = {"NO","ID ALAT","ID RUANGAN","JENIS KERUSAKAN","DESKRIPSI","STATUS"};
         model2 = new DefaultTableModel(header2,0);
         daftar_laporan.setModel(model2);
         
@@ -363,7 +363,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)))
-                .addContainerGap(537, Short.MAX_VALUE))
+                .addContainerGap(536, Short.MAX_VALUE))
         );
         datadiriLayout.setVerticalGroup(
             datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,19 +374,19 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel7))
-                .addGap(79, 79, 79)
+                .addGap(53, 53, 53)
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel8))
-                .addGap(70, 70, 70)
+                .addGap(63, 63, 63)
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel9))
-                .addGap(48, 48, 48)
+                .addGap(50, 50, 50)
                 .addGroup(datadiriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
                     .addComponent(jLabel10))
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
 
         mainpanel.add(datadiri, "card2");
@@ -447,7 +447,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -588,7 +588,7 @@ public class Menu extends javax.swing.JFrame {
             dataalatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataalatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

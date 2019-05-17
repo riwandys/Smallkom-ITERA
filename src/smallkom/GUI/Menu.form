@@ -138,7 +138,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/smallkom/Image/icons8-money-32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="  Rincian Biaya"/>
+            <Property name="text" type="java.lang.String" value="RINCIAN BIAYA"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -166,7 +166,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/smallkom/Image/icons8-workstation-32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="  Data Alat"/>
+            <Property name="text" type="java.lang.String" value="DATA ALAT"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -194,7 +194,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/smallkom/Image/icons8-system-report-32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="  Daftar Laporan"/>
+            <Property name="text" type="java.lang.String" value="DAFTAR LAPORAN"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

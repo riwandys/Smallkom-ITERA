@@ -213,7 +213,7 @@ public class Menu extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 122, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-money-32.png"))); // NOI18N
-        jButton6.setText("  Rincian Biaya");
+        jButton6.setText("RINCIAN BIAYA");
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setFocusPainted(false);
@@ -236,7 +236,7 @@ public class Menu extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 122, 255));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-workstation-32.png"))); // NOI18N
-        jButton7.setText("  Data Alat");
+        jButton7.setText("DATA ALAT");
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setFocusPainted(false);
@@ -259,7 +259,7 @@ public class Menu extends javax.swing.JFrame {
         jButton8.setFont(new java.awt.Font("Product Sans", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(0, 122, 255));
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smallkom/Image/icons8-system-report-32.png"))); // NOI18N
-        jButton8.setText("  Daftar Laporan");
+        jButton8.setText("DAFTAR LAPORAN");
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
         jButton8.setFocusPainted(false);

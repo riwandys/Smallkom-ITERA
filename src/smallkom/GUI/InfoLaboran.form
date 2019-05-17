@@ -62,7 +62,7 @@
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Component id="jLabel6" min="-2" pref="328" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="lokasi_ruangan" min="-2" pref="500" max="-2" attributes="0"/>
+                                  <Component id="lokasi_ruangan" alignment="0" min="-2" pref="500" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel1" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
                           </Group>
@@ -83,9 +83,9 @@
                   <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lokasi_ruangan" min="-2" pref="40" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>

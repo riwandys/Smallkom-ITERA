@@ -398,7 +398,6 @@ public class Menu extends javax.swing.JFrame {
         rincian_biaya.setAutoCreateRowSorter(true);
         rincian_biaya.setBackground(new java.awt.Color(254, 254, 254));
         rincian_biaya.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rincian_biaya.setForeground(new java.awt.Color(0, 122, 255));
         rincian_biaya.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -462,8 +461,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 122, 255));
         jLabel4.setText("Id Alat");
 
-        status.setForeground(new java.awt.Color(0, 122, 255));
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Pilih Status -", "Belum Dikerjakan", "Sedang Dikerjakan", "Selesai" }));
+        status.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 122, 255));
@@ -471,8 +470,9 @@ public class Menu extends javax.swing.JFrame {
 
         update.setBackground(new java.awt.Color(255, 255, 255));
         update.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        update.setForeground(new java.awt.Color(0, 122, 255));
         update.setText("Update");
+        update.setBorder(null);
+        update.setBorderPainted(false);
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -482,7 +482,6 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane3.setForeground(new java.awt.Color(0, 122, 255));
 
         daftar_laporan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        daftar_laporan.setForeground(new java.awt.Color(0, 122, 255));
         daftar_laporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -513,14 +512,16 @@ public class Menu extends javax.swing.JFrame {
             daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarreportLayout.createSequentialGroup()
                 .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(no_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(status, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(id_alat))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(id_alat)
+                    .addComponent(status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(daftarreportLayout.createSequentialGroup()
+                        .addGroup(daftarreportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(no_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())
@@ -557,7 +558,6 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane2.setForeground(new java.awt.Color(0, 122, 255));
 
         data_alat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        data_alat.setForeground(new java.awt.Color(0, 122, 255));
         data_alat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
